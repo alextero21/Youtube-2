@@ -1,0 +1,80 @@
+*{
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2b2b2b, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2b2b2b, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+:root{
+    --secundary-color:#c4c4d4;
+}
+
+#title{
+    text-align:center; 
+    border-bottom: 2px solid var(--secundary-color); 
+    margin-bottom: 20px
+}
+
+#title h1{
+    color:var(--secundary-color);
+}
+
+#caja-youtube-realtime{
+    text-align:center;
+}
+
+#span-input-youtube{
+ 
+    text-align: center;
+}
+
+#span-input-youtube span{
+    color:var(--secundary-color);
+}
+
+
+#span-input-youtube input[type=text]{
+    border: 2px solid var(--secundary-color);
+    color:#b277ff;
+
+    width: 50%;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    
+}
+
+#span-input-youtube input[type=text]:hover{
+   
+    border: 2px solid #838383;
+}
+
+#span-input-youtube input[type=text]::placeholder{
+    color:var(--secundary-color);
+    font-weight: bold;
+}
+
+#message{
+
+    text-align: center;
+}
+
+#message span{
+ 
+    border-bottom: 1px solid rgb(134, 0, 0);
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+iframe{
+    border:1px solid white;
+}
+
+#deleteText{
+    color:#d83939;
+    border: 2px solid var(--secundary-color);
+    border-radius: 20px;
+    font-size: 120%;
+}
