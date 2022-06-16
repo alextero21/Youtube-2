@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-  <title>Search</title>
+  <title>Youtube2</title>
   <link rel="stylesheet" href="index.css">
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

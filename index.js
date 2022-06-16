@@ -9,8 +9,8 @@ $(document).ready(function(){
         var splitUrlYoutube=labelIconoYoutube.val().split('/');
     
     
-        const widthYoutube='1000';
-        const heightYoutube='800';
+        const widthYoutube=$(window).width()-20;
+        const heightYoutube=$(window).height()-30;
         const colorSecundary='var(--secundary-color)';
        
         
