@@ -4,18 +4,40 @@ $(document).ready(function(){
     let cajaYoutube_father=$('#container-youtube');
     let message=$('#message span');
     let deleteText=$('#deleteText');
+    let history_videos=$('#history_videos');
     var messageError=0
     const widthYoutube=$(window).width()-20;
     const heightYoutube=$(window).height()-30;
     const colorSecundary='var(--secundary-color)';
-
 
     $(document).on("copy", function(e){
         e.stopPropagation();
         e.preventDefault();
     });
       
+
+    function forVideos(u){
+
+        u = u === null || u === '' || u == null || u === [] ? false : u
+
+        if(u===false){
+            return false
+        }
+
+        var templateVideos= ''
+
+        for (let i = 0; i < u.length; i++) {
+            templateVideos+= `<div class='videos_history'><iframe width=200 height=100  src='https://www.youtube.com/embed/${u[i]}' allowfullscreen>
+            </iframe></div>
+            `; 
+
+            return templateVideos;
+            
+        }
+    }
       
+    let StorageUrlsYoutube= JSON.parse(localStorage.getItem('url'))
+    history_videos.html(forVideos(StorageUrlsYoutube))
 
     labelIconoYoutube.bind('paste',function(e){
 
@@ -196,8 +218,13 @@ $(document).ready(function(){
         }
         
         localStorage.setItem('url',url) //Guardamos en el localstorage el array de los codigos para embed Youtube
-
+        let StorageUrlsYoutube= JSON.parse(localStorage.getItem('url'))
+        history_videos.html(forVideos(StorageUrlsYoutube))
     })
+
+    
+
+ 
 
 
     //localStorage.removeItem('url');
