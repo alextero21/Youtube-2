@@ -26,17 +26,19 @@ $(document).ready(function(){
 
         var templateVideos= ''
 
+     
+
         for (let i = 0; i < u.length; i++) {
             templateVideos+= `<div class='videos_history'><iframe width=200 height=100  src='https://www.youtube.com/embed/${u[i]}' allowfullscreen>
             </iframe></div>
             `; 
-
-            return templateVideos;
-            
         }
+
+        return templateVideos
     }
-      
+
     let StorageUrlsYoutube= JSON.parse(localStorage.getItem('url'))
+
     history_videos.html(forVideos(StorageUrlsYoutube))
 
     labelIconoYoutube.bind('paste',function(e){
