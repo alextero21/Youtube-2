@@ -5,9 +5,6 @@
 
 }
 
-body{
-    margin: 100px;
-}
 
 :root{
     --secundary-color:#c4c4d4;
@@ -77,4 +74,8 @@ iframe{
     border: 2px solid var(--secundary-color);
     border-radius: 20px;
     font-size: 120%;
+}
+
+#container-youtube{
+    text-align: center;
 }

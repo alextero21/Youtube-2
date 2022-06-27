@@ -22,8 +22,8 @@
             <button type='button' id='deleteText'> X </button>
         </div> 
 
-        <div id='message'><span>No hay video</span></div>
-        <div id='history'><span>Historial</span><div id='history_videos'></div></div>
+        <div id='message'></div>
+        <div id='history'><div id='history_videos'></div></div>
         
         <div id='logo-youtube'>
             <label for='label-icono-youtube'></label>

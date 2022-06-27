@@ -6,8 +6,8 @@ $(document).ready(function(){
     let deleteText=$('#deleteText');
     let history_videos=$('#history_videos');
     var messageError=0
-    const widthYoutube=$(window).width()-20;
-    const heightYoutube=$(window).height()-30;
+    const widthYoutube=$(window).width()-100;
+    const heightYoutube=$(window).height()-200;
     const colorSecundary='var(--secundary-color)';
 
     $(document).on("copy", function(e){
@@ -29,8 +29,8 @@ $(document).ready(function(){
      
 
         for (let i = 0; i < u.length; i++) {
-            templateVideos+= `<div class='videos_history'><iframe width=200 height=100  src='https://www.youtube.com/embed/${u[i]}' allowfullscreen>
-            </iframe></div>
+            templateVideos+= `<iframe width=200 height=100  src='https://www.youtube.com/embed/${u[i]}' allowfullscreen>
+            </iframe>
             `; 
         }
 
@@ -57,7 +57,10 @@ $(document).ready(function(){
         //Condiciones a entrada de url de Youtube .1
 
             var splitUrlYoutube=constTextPlain.split('/');
-        
+
+            let StorageUrlsYoutube= JSON.parse(localStorage.getItem('url'))
+            history_videos.html(forVideos(StorageUrlsYoutube))
+
             if(splitUrlYoutube.length === 5 && splitUrlYoutube[0] === 'https:' && splitUrlYoutube[1] === '' && splitUrlYoutube[3] === 'shorts' && splitUrlYoutube[2] === 'www.youtube.com' || splitUrlYoutube[2] === 'youtube.com'){
                 urlYoutube=splitUrlYoutube[4].split('?')[0];
         
@@ -79,8 +82,8 @@ $(document).ready(function(){
                 if(splitWatchYoutube[0] === 'watch?v' && splitWatchYoutube.length === 2){
                     urlYoutube=splitWatchYoutube[1]
                     cajaYoutube_father.html(
-                        `<div id='caja-youtube-realtime'><iframe width=${widthYoutube} height=${heightYoutube}  src='https://www.youtube.com/embed/${urlYoutube}' allowfullscreen>
-                        </iframe></div>
+                        `<iframe width=${widthYoutube} height=${heightYoutube}  src='https://www.youtube.com/embed/${urlYoutube}' allowfullscreen>
+                        </iframe>
                         `
                     );
 
@@ -212,7 +215,7 @@ $(document).ready(function(){
 
         url.unshift(urlYoutube)
 
-        if(url.length>20){// Si supera el tope de guardado, elimina a partir de la última fila
+        if(url.length>5){// Si supera el tope de guardado, elimina a partir de la última fila
            url.pop()
            url= JSON.stringify(url)
         }else{
@@ -220,10 +223,11 @@ $(document).ready(function(){
         }
         
         localStorage.setItem('url',url) //Guardamos en el localstorage el array de los codigos para embed Youtube
-        let StorageUrlsYoutube= JSON.parse(localStorage.getItem('url'))
-        history_videos.html(forVideos(StorageUrlsYoutube))
+        
+       
     })
 
+    
     
 
  
@@ -235,7 +239,7 @@ $(document).ready(function(){
 
     
     deleteText.click(function(){
-        labelIconoYoutube.val('');
+        labelIconoYoutube.val('').focus();
     });
     
 });
