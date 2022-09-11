@@ -1,11 +1,13 @@
 $(document).ready(function(){
-
+    
+   
     let labelIconoYoutube=$('#label-icono-youtube');
     let cajaYoutube_father=$('#container-youtube');
     let message=$('#message span');
     let deleteText=$('#deleteText');
     let history_videos=$('#history_videos');
     var messageError=0
+    var urlYoutube= true;
     const widthYoutube=$(window).width()-100;
     const heightYoutube=$(window).height()-200;
     const colorSecundary='var(--secundary-color)';
@@ -164,6 +166,41 @@ $(document).ready(function(){
 
                     message.html('Lista de reproducción').css('color',colorSecundary);
                     messageError=2.3;
+                }else if(splitWatchYoutube[0] === 'playlist?list' ^ splitWatchYoutube[0] === 'watch?v' && splitWatchYoutube.length >3){
+
+                    var splitUrlYoutubeExtend= splitUrlYoutube[3].split('&');
+
+                    valueWatch=''
+                    for (let i = 0; i < splitUrlYoutubeExtend.length; i++) {
+        
+                        const items = splitUrlYoutubeExtend[i].split('=');
+        
+                        if(items[0]==='watch?v'){
+                            if(items.length === 2){
+                             
+                                valueWatch=items[1]
+                            }
+        
+                        }
+                        
+                    }
+
+                    urlYoutube=valueWatch
+                    cajaYoutube_father.html(
+                        `<iframe width=${widthYoutube} height=${heightYoutube}  src='https://www.youtube.com/embed/${urlYoutube}' allowfullscreen>
+                        </iframe>
+                        `
+                    );
+
+        
+                    $('#value-hdn').attr('value',splitWatchYoutube[1]);
+                    message.html('Video').css('color',colorSecundary);
+
+                    messageError=2.4;
+
+
+                    
+
                 }else{//Si no escribe nada, dejalo vacio
                     $('#caja-youtube-realtime').remove();
                     $('#value-hdn').attr('value','');
@@ -171,6 +208,7 @@ $(document).ready(function(){
                     messageError=2.4;
                 
                 }
+
         
             
         
@@ -192,8 +230,17 @@ $(document).ready(function(){
                 message.html('Hay un error').css('color','red');
 
                 urlYoutube=undefined
+                messageError=4;
             
             }
+
+
+
+            
+            
+
+            
+            
 
         //---------------- Fin .1 -----------------------
 
@@ -227,6 +274,7 @@ $(document).ready(function(){
        
     })
 
+    
     
     
 
